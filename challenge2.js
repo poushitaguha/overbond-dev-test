@@ -39,33 +39,33 @@ let governmentArray = [
 let bondCurveArray = corporateArray.map(corp => {
 
     let outputObj = {};
-    let nextHigherYears = 99999, nextLowerYears = 0;
+    let nextHigherYear = 99999, nextLowerYear = 0;
     let nextHigherYield = 0, nextLowerYield = 0;
 
     governmentArray.forEach(gov => {
-        if (gov.term > corp.term && gov.term < nextHigherYears) {
-            nextHigherYears = gov.term
+        if (gov.term > corp.term && gov.term < nextHigherYear) {
+            nextHigherYear = gov.term
             nextHigherYield = gov.yield
         }
-        else if (corp.term > gov.term && nextLowerYears < gov.term) {
-            nextLowerYears = gov.term
+        else if (corp.term > gov.term && nextLowerYear < gov.term) {
+            nextLowerYear = gov.term
             nextLowerYield = gov.yield
         }
-
     });
 
     console.log("Corporate Bond " + corp.bond)
     console.log("Corporate Bond term " + corp.term)
     console.log("Corporate Bond yield " + corp.yield)
-    console.log("nextHigherYears" + nextHigherYears)
-    console.log("nextLowerYears" + nextLowerYears)
-    console.log("nextHigherYield" + nextHigherYield)
-    console.log("nextLowerYield" + nextLowerYield)
+    console.log("nextHigherYear " + nextHigherYear)
+    console.log("nextLowerYear " + nextLowerYear)
+    console.log("nextHigherYield " + nextHigherYield)
+    console.log("nextLowerYield " + nextLowerYield)
 
-    let slope = (nextHigherYield - nextLowerYield) / (nextHigherYears - nextLowerYears)
-    let y = slope * (corp.term - nextLowerYears) + nextLowerYield
+    let slope = (nextHigherYield - nextLowerYield) / (nextHigherYear - nextLowerYear)
+    let y = slope * (corp.term - nextLowerYear) + nextLowerYield
 
     spread_to_curve = corp.yield - y
+    spread_to_curve = spread_to_curve.toFixed(2);
 
     outputObj["bond"] = corp.bond;
     outputObj["spread_to_curve"] = spread_to_curve;
@@ -74,3 +74,21 @@ let bondCurveArray = corporateArray.map(corp => {
 });
 
 console.log(bondCurveArray);
+
+// Output as seen
+// Corporate Bond C1
+// Corporate Bond term 10.3
+// Corporate Bond yield 5.3
+// nextHigherYear 12
+// nextLowerYear 9.4
+// nextHigherYield 4.8
+// nextLowerYield 3.7
+// Corporate Bond C2
+// Corporate Bond term 15.2
+// Corporate Bond yield 8.3
+// nextHigherYear 16.3
+// nextLowerYear 12
+// nextHigherYield 5.5
+// nextLowerYield 4.8
+// [ { bond: 'C1', spread_to_curve: '1.22' },
+//   { bond: 'C2', spread_to_curve: '2.98' } ]
