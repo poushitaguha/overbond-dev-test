@@ -98,3 +98,12 @@ let yieldSpreadArray = corporateArray.map(corp => {
 });
 
 console.log(yieldSpreadArray);
+
+// Output as seen
+// [ { bond: 'C1', benchmark: 'G1', spread_to_benchmark: '1.60' },
+//   { bond: 'C2', benchmark: 'G2', spread_to_benchmark: '1.50' },
+//   { bond: 'C3', benchmark: 'G3', spread_to_benchmark: '2.00' },
+//   { bond: 'C4', benchmark: 'G3', spread_to_benchmark: '2.90' },
+//   { bond: 'C5', benchmark: 'G4', spread_to_benchmark: '0.90' },
+//   { bond: 'C6', benchmark: 'G5', spread_to_benchmark: '1.80' },
+//   { bond: 'C7', benchmark: 'G6', spread_to_benchmark: '2.50' } ]
