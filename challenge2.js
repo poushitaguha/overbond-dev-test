@@ -43,10 +43,12 @@ let bondCurveArray = corporateArray.map(corp => {
     let nextHigherYield = 0, nextLowerYield = 0;
 
     governmentArray.forEach(gov => {
+        // Check if government term is greater than corporate term and government term is lesser than next higher year
         if (gov.term > corp.term && gov.term < nextHigherYear) {
             nextHigherYear = gov.term
             nextHigherYield = gov.yield
         }
+        // Check if corporate term is greater than government term and next lower year is lesser than government term
         else if (corp.term > gov.term && nextLowerYear < gov.term) {
             nextLowerYear = gov.term
             nextLowerYield = gov.yield
@@ -61,10 +63,16 @@ let bondCurveArray = corporateArray.map(corp => {
     console.log("nextHigherYield " + nextHigherYield)
     console.log("nextLowerYield " + nextLowerYield)
 
+    // Formula of slope of a line is "m = (y2 - y1) / (x2 - x1)"
+    // (x1, y1) = coordinates of first point in the line
+    // (x2, y2) = coordinates of second point in the line
     let slope = (nextHigherYield - nextLowerYield) / (nextHigherYear - nextLowerYear)
+
+    // Euqation of a straight line is "y = mx + c"
     let y = slope * (corp.term - nextLowerYear) + nextLowerYield
 
     spread_to_curve = corp.yield - y
+    // Rounding off to 2 decimal places
     spread_to_curve = spread_to_curve.toFixed(2);
 
     outputObj["bond"] = corp.bond;

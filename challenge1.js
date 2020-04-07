@@ -82,9 +82,11 @@ let yieldSpreadArray = corporateArray.map(corp => {
     let benchmark;
 
     governmentArray.forEach(gov => {
+        // Check if difference between corporate term and government term is lesser than closest term
         if (Math.abs(corp.term - gov.term) < closestTerm) {
             closestTerm = Math.abs(corp.term - gov.term);
             yield = corp.yield - gov.yield;
+            // Rounding off to 2 decimal places
             yield = yield.toFixed(2);
             benchmark = gov.bond;
         }
