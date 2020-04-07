@@ -1,7 +1,3 @@
-# Coding Challenge
-
-Here are two exercises that will give us some insight into your coding and problem solving abilities. 
-
 ## Challenge #1
 
 Calculate the yield spread (return) between a corporate bond and its government bond benchmark. 
@@ -23,9 +19,18 @@ bond,benchmark,spread_to_benchmark
 C1,G1,1.60%
 ```
 
-To explain, the best candidate for a benchmark for C1 (corporate bond) is the G1 (government bond) since their difference in term is only 0.9 years vs G2 that is 1.7 years away. Hence, the `spread_to_benchmark` for C1 is C1.yield - G1.yield = 1.60%.
+### Final Output
 
-Given a list of corporate and government bonds, find a benchmark bond for each corporate bond and calculate the spread to benchmark.
+```
+[ { bond: 'C1', benchmark: 'G1', spread_to_benchmark: '1.60' },
+  { bond: 'C2', benchmark: 'G2', spread_to_benchmark: '1.50' },
+  { bond: 'C3', benchmark: 'G3', spread_to_benchmark: '2.00' },
+  { bond: 'C4', benchmark: 'G3', spread_to_benchmark: '2.90' },
+  { bond: 'C5', benchmark: 'G4', spread_to_benchmark: '0.90' },
+  { bond: 'C6', benchmark: 'G5', spread_to_benchmark: '1.80' },
+  { bond: 'C7', benchmark: 'G6', spread_to_benchmark: '2.50' } ]
+
+```
 
 ## Challenge #2
 
@@ -62,27 +67,24 @@ Where `A = C1.yield = 5.30%` and `X = C2.yield = 8.30%`. Values of B and Y requi
 
 You can assume that the list of bonds will always contain at least one government bond with a term less all the corporate bonds. As well, it will contain at least one government bond with a term greater than all the corporate bonds. So that you will always be able to calculate `spread_to_curve` for each corporate bond.
 
-## Technical spec
+### Final Output
 
-Use any language with which you are most comfortable. Overbond is a Rails shop, so if you can write the solution in Ruby, great! But it's not required.
-
-No UI is necessary. You can read and write the output to standard in/out. Make sure it's easy to provide specific files for the application to process and calculate results for.
-
-Please organize, design, test and document your code as if it were going into production. Write your README as if it was for a production service and include the following items:
-
-* Reasoning behind your technical choices
-* Trade-offs you might have made or what you might do differently if you were to spend additional time on the project
-
-## How we review
-
-Remember, this is production level code. The aspects of your code we will judge include:
-
-* **Functionality**: Does the application do what was asked?
-* **Code quality**: Is the code simple and easy to understand?
-* **Testing**: Are there automated tests? Do they provide sufficient coverage?
-* **Technical choices**: Do choices of libraries, frameworks, etc. seem appropriate for the chosen application?
-* **Documentation**: Is a README file included? Does it specify how to execute the app? Does it describe your approach sufficiently?
-
-## Submission
-
-Email us a zip file containing your solution. Alternatively, create a Github repo. If you decide to make the repo private, add @overbondeng as a collaborator. 
+```
+Corporate Bond C1
+Corporate Bond term 10.3
+Corporate Bond yield 5.3
+nextHigherYear 12
+nextLowerYear 9.4
+nextHigherYield 4.8
+nextLowerYield 3.7
+Corporate Bond C2
+Corporate Bond term 15.2
+Corporate Bond yield 8.3
+nextHigherYear 16.3
+nextLowerYear 12
+nextHigherYield 5.5
+nextLowerYield 4.8
+[ { bond: 'C1', spread_to_curve: '1.22' },
+  { bond: 'C2', spread_to_curve: '2.98' } ]
+  
+```

@@ -1,4 +1,4 @@
-// Output
+// Required Output
 // bond,benchmark,spread_to_benchmark
 // C1,G1,1.60%
 
@@ -101,7 +101,7 @@ let yieldSpreadArray = corporateArray.map(corp => {
 
 console.log(yieldSpreadArray);
 
-// Output as seen
+// Final Output
 // [ { bond: 'C1', benchmark: 'G1', spread_to_benchmark: '1.60' },
 //   { bond: 'C2', benchmark: 'G2', spread_to_benchmark: '1.50' },
 //   { bond: 'C3', benchmark: 'G3', spread_to_benchmark: '2.00' },

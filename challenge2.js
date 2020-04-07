@@ -1,4 +1,4 @@
-// Output
+// Required Output
 // bond,spread_to_curve
 // C1,1.22%
 // C2,2.98%
@@ -83,7 +83,7 @@ let bondCurveArray = corporateArray.map(corp => {
 
 console.log(bondCurveArray);
 
-// Output as seen
+// Final Output
 // Corporate Bond C1
 // Corporate Bond term 10.3
 // Corporate Bond yield 5.3
